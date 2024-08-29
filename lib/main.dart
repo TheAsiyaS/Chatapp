@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
-import 'package:message_app/presentation/home.dart';
+import 'package:message_app/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
