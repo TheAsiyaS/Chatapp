@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:message_app/common/colour_size_icon.dart';
-import 'package:message_app/screen/tab_screens/Archievd.dart';
-import 'package:message_app/screen/tab_screens/Calls.dart';
-import 'package:message_app/screen/tab_screens/Chat.dart';
+import 'package:message_app/presentation/screen/CommonWidget.dart';
+import 'package:message_app/presentation/animation/LogoAnimation.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -13,19 +11,23 @@ class Home extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-          leading: const CircleAvatar(
-            backgroundImage: AssetImage('asset/Logo.png'),
-          ),
-          title: Text(
-            'THE WINGS',
-            style: GoogleFonts.lora(),
-          ),
-          actions: [IconButton(onPressed: () {}, icon: const Icon(ksetting))],
-        ),
-        body: const Column(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TabBar(
+            Align(
+              alignment: Alignment.topLeft,
+              child: Row(
+                children: [
+                  const SizedBox(
+                    height: 100,
+                    child: AnimationLogo(),
+                  ),
+                  const Spacer(),
+                  IconButton(onPressed: () {}, icon: const Icon(kmenu))
+                ],
+              ),
+            ),
+            const TabBar(
               labelColor: kwhite,
               unselectedLabelColor: kwhite,
               labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
@@ -49,9 +51,9 @@ class Home extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
-                  children: [ChatScreen(), CallsScreen(), ArchievdScreen()]),
+                  children: [CommonWidget(), CommonWidget(), CommonWidget()]),
             )
           ],
         ),

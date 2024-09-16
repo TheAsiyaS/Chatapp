@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:message_app/common/colour_size_icon.dart';
 
 final images = [
@@ -51,7 +50,7 @@ class ChatScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          '${index+1}+ new messages, check now!',
+                          '${index + 1}+ new messages, check now!',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -65,9 +64,9 @@ class ChatScreen extends StatelessWidget {
                                   gradient: const LinearGradient(
                                       begin: Alignment.bottomLeft,
                                       colors: [
-                                        Colors.teal,
+                                        Color.fromARGB(255, 0, 115, 150),
                                         kblack,
-                                        Colors.teal
+                                        Color.fromARGB(255, 0, 92, 150)
                                       ])),
                               child: Center(
                                   child: Text(
@@ -90,3 +89,6 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
+/*
+
+ */
