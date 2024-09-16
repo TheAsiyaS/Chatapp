@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
+import 'package:message_app/presentation/screen/chat_detailed.dart';
 
 final images = [
   'https://t4.ftcdn.net/jpg/06/74/49/09/360_F_674490958_Ak7DhLW2Xjb7fuxALHl78tzFKN4a56p0.jpg',
@@ -17,8 +18,8 @@ final images = [
 ];
 
 class CommonWidget extends StatelessWidget {
-  const CommonWidget({super.key});
-
+  const CommonWidget({super.key, required this.iscall});
+  final bool iscall;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -33,7 +34,7 @@ class CommonWidget extends StatelessWidget {
                     height: size.height / 8,
                     decoration: BoxDecoration(
                         gradient: const LinearGradient(colors: [
-                          Color.fromARGB(255, 87, 94, 93),
+                          Color.fromARGB(255, 31, 70, 100),
                           Color.fromARGB(128, 77, 80, 81),
                           kblack
                         ]),
@@ -41,6 +42,12 @@ class CommonWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ChatDetailed()));
+                        },
                         leading: CircleAvatar(
                           radius: 50,
                           backgroundImage: NetworkImage(images[index]),
@@ -49,34 +56,47 @@ class CommonWidget extends StatelessWidget {
                           'Username',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text(
-                          '${index + 1}+ new messages, check now!',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        trailing: Column(
-                          children: [
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.bottomLeft,
-                                      colors: [
-                                        Color.fromARGB(255, 0, 115, 150),
-                                        kblack,
-                                        Color.fromARGB(255, 0, 92, 150)
-                                      ])),
-                              child: Center(
-                                  child: Text(
-                                '${index + 1}',
-                                style: const TextStyle(fontSize: 15),
-                              )),
-                            ),
-                            Text('$index:00')
-                          ],
-                        ),
+                        subtitle: iscall
+                            ? const Row(
+                                children: [
+                                  Icon(
+                                    kcallrecieved,
+                                    size: 15,
+                                    color: kgreen,
+                                  ),
+                                  Text(' Today 9:30')
+                                ],
+                              )
+                            : Text(
+                                '${index + 1}+ new messages, check now!',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                        trailing: iscall
+                            ? const Icon(kcall)
+                            : Column(
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        gradient: const LinearGradient(
+                                            begin: Alignment.bottomLeft,
+                                            colors: [
+                                              Color.fromARGB(255, 33, 183, 228),
+                                              kblack,
+                                              Color.fromARGB(255, 14, 115, 177)
+                                            ])),
+                                    child: Center(
+                                        child: Text(
+                                      '${index + 1}',
+                                      style: const TextStyle(fontSize: 15),
+                                    )),
+                                  ),
+                                  Text(iscall ? '' : '$index:00')
+                                ],
+                              ),
                       ),
                     ));
               },

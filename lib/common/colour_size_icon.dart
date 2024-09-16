@@ -12,7 +12,7 @@ const kRed = Colors.red;
 const ktransparent = Colors.transparent;
 const kblackdarktrans = Color.fromARGB(194, 0, 0, 0);
 const kamber = Colors.amber;
-
+const kgreen = Colors.green;
 const w2 = SizedBox(
   width: 2,
 );
@@ -75,3 +75,5 @@ const ksetting = Icons.settings;
 const kperson = Icons.person_outline_outlined;
 const knote = CupertinoIcons.news;
 const kinfoOutline = Icons.info_outline;
+const kcallrecieved = Icons.south_west;
+const kcalloutGoing = Icons.north_east;

@@ -52,8 +52,17 @@ class Home extends StatelessWidget {
               ],
             ),
             const Expanded(
-              child: TabBarView(
-                  children: [CommonWidget(), CommonWidget(), CommonWidget()]),
+              child: TabBarView(children: [
+                CommonWidget(
+                  iscall: false,
+                ),
+                CommonWidget(
+                  iscall: true,
+                ),
+                CommonWidget(
+                  iscall: false,
+                )
+              ]),
             )
           ],
         ),
