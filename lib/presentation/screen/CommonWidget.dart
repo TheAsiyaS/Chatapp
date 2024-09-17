@@ -46,7 +46,10 @@ class CommonWidget extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ChatDetailed()));
+                                  builder: (context) => ChatDetailed(
+                                        profileUrl: images[index],
+                                        username: 'username',
+                                      )));
                         },
                         leading: CircleAvatar(
                           radius: 50,
