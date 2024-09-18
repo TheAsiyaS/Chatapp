@@ -40,22 +40,34 @@ class OthersProfile extends StatelessWidget {
               const Text('UI designer'),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(kLocation), Text('Location')],
+                children: [Icon(kLocation,), Text('Location')],
               ),
               Card(
-                color: const Color.fromARGB(80, 255, 255, 255),
+                color: Color.fromARGB(80, 11, 102, 148),
                 child: SizedBox(
-                  height: size.height / 8,
+                  height: size.height / 9,
                   width: size.width / 2,
                   child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       medianumber(
                         number: '6',
                         name: 'voices',
                       ),
+                      VerticalDivider(
+                        color: klightwhite,
+                        endIndent: 10,
+                        indent: 10,
+                      ),
                       medianumber(
                         number: '13',
                         name: 'Media',
+                      ),
+                      VerticalDivider(
+                        color: klightwhite,
+                        endIndent: 10,
+                        indent: 10,
                       ),
                       medianumber(
                         number: '347',
@@ -64,7 +76,11 @@ class OthersProfile extends StatelessWidget {
                     ],
                   ),
                 ),
-              )
+              ),
+            const  Align(
+              alignment: Alignment.topLeft,
+
+              child:  Text('Recent Activity',style: TextStyle(fontWeight: FontWeight.bold),))
             ],
           )),
         ),
@@ -84,6 +100,7 @@ class medianumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [Text(number), Text(name)],
     );
   }
