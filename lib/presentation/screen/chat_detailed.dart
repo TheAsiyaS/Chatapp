@@ -1,27 +1,40 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
+import 'package:message_app/presentation/screen/others_profile.dart';
 
 class ChatDetailed extends StatelessWidget {
   const ChatDetailed(
-      {super.key, required this.profileUrl, required this.username});
+      {super.key,
+      required this.profileUrl,
+      required this.username,
+      required this.id});
   final String profileUrl;
   final String username;
-
+  final String id;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(profileUrl),
-            ),
-            w20,
-            Text(username)
-          ],
+        title: GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => OthersProfile(
+                      url: profileUrl,
+                      id: id,
+                      username: username,
+                    )));
+          },
+          child: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(profileUrl),
+              ),
+              w20,
+              Text(username)
+            ],
+          ),
         ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(kmoreVertical))
@@ -40,7 +53,7 @@ class ChatDetailed extends StatelessWidget {
                         height: 40,
                         width: size.width / 2,
                         decoration: BoxDecoration(
-                            gradient: const LinearGradient(
+                            gradient: const LinearGradient( 
                                 begin: Alignment.bottomLeft,
                                 colors: [
                                   Color.fromARGB(255, 14, 130, 197),
@@ -80,7 +93,7 @@ class ChatDetailed extends StatelessWidget {
                           color: const Color.fromARGB(35, 255, 255, 255)),
                       placeholder: 'Type here....',
                       placeholderStyle: const TextStyle(color: kgrey),
-                    style: const TextStyle(color: kwhite),
+                      style: const TextStyle(color: kwhite),
                     ),
                   ),
                   IconButton(

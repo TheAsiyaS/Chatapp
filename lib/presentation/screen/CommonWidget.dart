@@ -47,6 +47,7 @@ class CommonWidget extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => ChatDetailed(
+                                    id: index.toString(),
                                         profileUrl: images[index],
                                         username: 'username',
                                       )));
