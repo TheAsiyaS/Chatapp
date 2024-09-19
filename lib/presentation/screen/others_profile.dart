@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class OthersProfile extends StatelessWidget {
   const OthersProfile({
@@ -40,10 +41,15 @@ class OthersProfile extends StatelessWidget {
               const Text('UI designer'),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(kLocation,), Text('Location')],
+                children: [
+                  Icon(
+                    kLocation,
+                  ),
+                  Text('Location')
+                ],
               ),
               Card(
-                color: Color.fromARGB(80, 11, 102, 148),
+                color: const Color.fromARGB(80, 11, 102, 148),
                 child: SizedBox(
                   height: size.height / 9,
                   width: size.width / 2,
@@ -77,16 +83,43 @@ class OthersProfile extends StatelessWidget {
                   ),
                 ),
               ),
-            const  Align(
-              alignment: Alignment.topLeft,
-
-              child:  Text('Recent Activity',style: TextStyle(fontWeight: FontWeight.bold),))
+              const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Recent Activity',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+              SizedBox(
+                  height: size.height / 3,
+                  width: size.width,
+                  child: SfCartesianChart(
+                      // Initialize category axis
+                      primaryXAxis: const CategoryAxis(),
+                      series: <LineSeries<SalesData, String>>[
+                        LineSeries<SalesData, String>(
+                            color: Colors.blueGrey,
+                            dataSource: <SalesData>[
+                              SalesData('Jan', 0),
+                              SalesData('Feb', 28),
+                              SalesData('Mar', 34),
+                              SalesData('Apr', 32),
+                              SalesData('May', 40)
+                            ],
+                            xValueMapper: (SalesData sales, _) => sales.year,
+                            yValueMapper: (SalesData sales, _) => sales.sales)
+                      ]))
             ],
           )),
         ),
       ),
     );
   }
+}
+
+class SalesData {
+  SalesData(this.year, this.sales);
+  final String year;
+  final double sales;
 }
 
 class medianumber extends StatelessWidget {
