@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
+import 'package:message_app/presentation/animation/ImageFlipAnimation.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class OthersProfile extends StatelessWidget {
@@ -29,10 +30,7 @@ class OthersProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 70,
-                backgroundImage: NetworkImage(url),
-              ),
+              ImageFlip(url: url, radius: 70, isasset: false),
               Text(
                 username,
                 style:

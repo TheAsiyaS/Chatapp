@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:message_app/common/colour_size_icon.dart';
 import 'package:message_app/presentation/screen/CommonWidget.dart';
 import 'package:message_app/presentation/animation/LogoAnimation.dart';
+import 'package:message_app/presentation/screen/profile_page.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,7 +24,18 @@ class Home extends StatelessWidget {
                     child: AnimationLogo(),
                   ),
                   const Spacer(),
-                  IconButton(onPressed: () {}, icon: const Icon(kmenu))
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ProfilePage()));
+                    },
+                    child: const CircleAvatar(
+                      radius: 25,
+                      backgroundImage: NetworkImage(
+                          'https://images.lifestyleasia.com/wp-content/uploads/sites/7/2024/02/15114642/Best-kdramas-with-female-CEO-2.jpg'),
+                    ),
+                  ),
+                  w10
                 ],
               ),
             ),

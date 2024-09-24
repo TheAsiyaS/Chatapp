@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class ImageFlip extends StatefulWidget {
-  const ImageFlip({super.key});
-
+  const ImageFlip({super.key, required this.url, required this.radius, required this.isasset});
+final String url;
+final double radius;
+final bool isasset;
   @override
   ImageFlipState createState() => ImageFlipState();
 }
@@ -56,20 +58,20 @@ class ImageFlipState extends State<ImageFlip>
             ..rotateY(angle),
           alignment: Alignment.center,
           child: isFront
-              ? _buildFrontAvatar('asset/Logo.png', true)
+              ? _buildFrontAvatar(widget.url, widget.isasset,widget.radius)
               : Transform(
                   transform: Matrix4.identity(),
                   alignment: Alignment.center,
-                  child: _buildFrontAvatar("asset/Logo.png", true),
+                  child: _buildFrontAvatar(widget.url, widget.isasset,widget.radius),
                 ),
         );
       },
     );
   }
 
-  Widget _buildFrontAvatar(String photoUrl, bool isasset) {
+  Widget _buildFrontAvatar(String photoUrl, bool isasset,double radius) {
     return CircleAvatar(
-      radius: 70,
+      radius: radius,
       backgroundImage: isasset ? AssetImage(photoUrl) : NetworkImage(photoUrl),
     );
   }
